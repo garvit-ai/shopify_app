@@ -1,3 +1,5 @@
 import { redirect } from "react-router";
 
-export const loader = async () => redirect("/app/pincodes");
+export const loader = async () => {
+    return redirect("/app/pincodes");
+};
