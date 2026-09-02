@@ -119,13 +119,52 @@ export default function Pincodes() {
                     <s-section key={zone} heading={zone.toUpperCase()}>
                         <Form method="post">
                             <input type="hidden" name="zone" value={zone} />
-                            <s-stack direction="inline" gap="base">
-                                <s-text-field name="basePrice" label="Base price (₹)" value={r.basePrice ?? 0} />
-                                <s-text-field name="baseWeightGrams" label="Base weight (g)" value={r.baseWeightGrams ?? 500} />
-                                <s-text-field name="perKgExtra" label="Per extra kg (₹)" value={r.perKgExtra ?? 0} />
-                                <s-text-field name="etaDays" label="ETA (days)" value={r.etaDays ?? 3} />
-                                <s-button type="submit" variant="primary">Save</s-button>
-                            </s-stack>
+
+                            <label style={{ display: "block", marginTop: "12px" }}>
+                                Base price (₹)
+                                <input
+                                    type="number"
+                                    step="0.01"
+                                    name="basePrice"
+                                    defaultValue={r.basePrice ?? 0}
+                                    style={{ width: "100%", padding: "8px" }}
+                                />
+                            </label>
+
+                            <label style={{ display: "block", marginTop: "12px" }}>
+                                Base weight (g)
+                                <input
+                                    type="number"
+                                    name="baseWeightGrams"
+                                    defaultValue={r.baseWeightGrams ?? 500}
+                                    style={{ width: "100%", padding: "8px" }}
+                                />
+                            </label>
+
+                            <label style={{ display: "block", marginTop: "12px" }}>
+                                Per extra kg (₹)
+                                <input
+                                    type="number"
+                                    step="0.01"
+                                    name="perKgExtra"
+                                    defaultValue={r.perKgExtra ?? 0}
+                                    style={{ width: "100%", padding: "8px" }}
+                                />
+                            </label>
+
+                            <label style={{ display: "block", marginTop: "12px" }}>
+                                ETA (days)
+                                <input
+                                    type="number"
+                                    name="etaDays"
+                                    defaultValue={r.etaDays ?? 3}
+                                    style={{ width: "100%", padding: "8px" }}
+                                />
+                            </label>
+
+                            <button type="submit" style={{ marginTop: "12px", padding: "8px 16px" }}>
+                                Save
+                            </button>
                         </Form>
                     </s-section>
                 );
