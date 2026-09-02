@@ -2,7 +2,7 @@
 
 client_id = "be263a0598e83dd1707646a23f8a42ec"
 name = "pincode-shipping-rates"
-application_url = "https://example.com"
+application_url = "https://shopify-app-y48p.onrender.com"
 embedded = true
 
 [access_scopes]
@@ -10,14 +10,15 @@ embedded = true
 scopes = "write_metaobject_definitions,write_metaobjects,write_products,write_shipping"
 
 [auth]
-redirect_urls = [ "https://example.com/api/auth" ]
+redirect_urls = [ "https://shopify-app-y48p.onrender.com/auth/callback" ]
 
 [webhooks]
 api_version = "2026-10"
 
 [build]
-automatically_update_urls_on_dev = true
+automatically_update_urls_on_dev = false
 
-url = "https://divided-early-limiting-battle.trycloudflare.com"
+[app_proxy]
+url = "https://shopify-app-y48p.onrender.com/proxy/pincode"
 subpath = "pincode"
 prefix = "apps"
