@@ -1,0 +1,58 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Note that some adapters may set a maximum length for the String type by default, please ensure your strings are long
+// enough when changing adapters.
+// See https://www.prisma.io/docs/orm/reference/prisma-schema-reference#string for more information
+datasource db {
+  provider = "sqlite"
+  url      = "file:dev.sqlite"
+}
+
+model Session {
+  id            String    @id
+  shop          String
+  state         String
+  isOnline      Boolean   @default(false)
+  scope         String?
+  expires       DateTime?
+  accessToken   String
+  userId        BigInt?
+  firstName     String?
+  lastName      String?
+  email         String?
+  accountOwner  Boolean   @default(false)
+  locale        String?
+  collaborator  Boolean?  @default(false)
+  emailVerified Boolean?  @default(false)
+  refreshToken        String?
+  refreshTokenExpires DateTime?
+}
+
+model PincodeZone {
+  id      String @id @default(cuid())
+  shop    String
+  pincode String
+  zone    String
+
+  @@unique([shop, pincode])
+  @@index([shop, pincode])
+}
+
+model ZoneRate {
+  id              String @id @default(cuid())
+  shop            String
+  zone            String
+  basePrice       Float
+  baseWeightGrams Int    @default(500)
+  perKgExtra      Float  @default(0)
+  etaDays         Int    @default(3)
+
+  @@unique([shop, zone])
+  @@index([shop])
+}
+

@@ -1,0 +1,37 @@
+<div class="pincode-checker" data-pincode-checker>
+  <label for="pincode-input">{{ block.settings.heading }}</label>
+  <div style="display:flex; gap:8px; margin-top:6px;">
+    <input type="text" id="pincode-input" inputmode="numeric" maxlength="6" placeholder="560001" style="padding:8px; flex:1;">
+    <button type="button" data-pincode-check style="padding:8px 16px;">Check</button>
+  </div>
+  <p data-pincode-result style="margin-top:8px;"></p>
+</div>
+
+<script>
+  (function () {
+    var root = document.currentScript.previousElementSibling;
+    var input = root.querySelector('#pincode-input');
+    var btn = root.querySelector('[data-pincode-check]');
+    var out = root.querySelector('[data-pincode-result]');
+    var grams = {{ product.selected_or_first_available_variant.weight | default: 0 }};
+
+    btn.addEventListener('click', function () {
+      var pin = input.value.trim();
+      out.textContent = 'Checking...';
+      fetch('/apps/pincode?pincode=' + encodeURIComponent(pin) + '&grams=' + grams)
+        .then(function (r) { return r.json(); })
+        .then(function (d) { out.textContent = d.message; })
+        .catch(function () { out.textContent = 'Something went wrong.'; });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Pincode checker",
+  "target": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Check delivery availability" }
+  ]
+}
+{% endschema %}
