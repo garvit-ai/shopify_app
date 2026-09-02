@@ -17,6 +17,10 @@
 
     btn.addEventListener('click', function () {
       var pin = input.value.trim();
+      if (!/^\d{6}$/.test(pin)) {
+        out.textContent = 'Enter a valid 6-digit pincode.';
+        return;
+      }
       out.textContent = 'Checking...';
       fetch('/apps/pincode?pincode=' + encodeURIComponent(pin) + '&grams=' + grams)
         .then(function (r) { return r.json(); })
