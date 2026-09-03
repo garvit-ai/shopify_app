@@ -121,7 +121,7 @@ export default function Pincodes() {
                             <input type="hidden" name="zone" value={zone} />
 
                             <label style={{ display: "block", marginTop: "12px" }}>
-                                Base price (₹)
+                                Base price ($)
                                 <input
                                     type="number"
                                     step="0.01"
@@ -142,7 +142,7 @@ export default function Pincodes() {
                             </label>
 
                             <label style={{ display: "block", marginTop: "12px" }}>
-                                Per extra kg (₹)
+                                Per extra kg ($)
                                 <input
                                     type="number"
                                     step="0.01"

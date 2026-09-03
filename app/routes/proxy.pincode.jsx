@@ -34,6 +34,6 @@ export async function loader({ request }) {
         zone: zoneRow.zone,
         price,
         etaDays: rate.etaDays,
-        message: `₹${price} · delivered in ${rate.etaDays} days`,
+        message: `$${price} · delivered in ${rate.etaDays} days`,
     });
 }
